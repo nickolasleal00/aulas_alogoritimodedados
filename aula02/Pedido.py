@@ -18,7 +18,7 @@ class Pedido:
         return soma
 
     def __str__(self):
-        txt = "Pedido realizado em:" + str(self.data) 
+        txt = "Pedido realizado em: " + str(self.data) 
         # txt += "\nCliente: " + self.client.nome
         txt += "\nCliente: " + str(self.cliente)
         txt += "\nProdutos: " 
