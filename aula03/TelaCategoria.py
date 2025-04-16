@@ -2,9 +2,12 @@ import sys
 # from PyQt5.QtWidgets import QPushButton, QLineEdit
 from PyQt5.QtWidgets import *
 from Categoria import Categoria
+from TelaCarro import TelaCarro
 
 class TelaCategoria(QMainWindow):
-    def __init__(self, titulo = "Tela de Categoria", categoria = []):
+    def __init__(self, titulo = "Tela de Categoria", categorias = [], telaCar = None):
+        self.telaCarro = telaCar
+        self.categorias = categorias
         super().__init__()
         self.setWindowTitle(titulo)
         self.setGeometry(300, 150, 150, 150)
@@ -25,6 +28,9 @@ class TelaCategoria(QMainWindow):
             cat = Categoria(nome) 
             self.categorias.append(cat)
             QMessageBox.information(self, "Categoria Salva", str(cat) )
+            if self.telaCarro is not None:
+                self.telaCarro.carregarCategorias()
+            self.txtNome.setText("")    
             self.hide()
 
     def definirLayout(self):
