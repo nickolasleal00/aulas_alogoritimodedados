@@ -3,6 +3,5 @@ class Categoria:
         self.id = id
         self.nome = nome
 
-        def __str__(self):
-         return f"Categoria: {self.nome} (ID: {self.id})"
+      
         

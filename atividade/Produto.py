@@ -1,4 +1,5 @@
 from abc import ABC,abstractmethod
+from Categoria import Categoria
 
 class Produto(ABC):
     def __init__(self,modelo,cor,preco,categoria):
@@ -7,7 +8,7 @@ class Produto(ABC):
         self._preco = preco
         self.categoria = categoria
 
-    
+    @property
     def preco(self):
         return self._preco
 
