@@ -3,11 +3,11 @@ from PyQt5.QtWidgets import QMainWindow, QLabel, QLineEdit, QVBoxLayout, QPushBu
 class TelaDesktop(QMainWindow):
     def __init__(self, categorias):
         super().__init__()
-        self.categorias = categorias  
+        self.categorias = categorias
+        self.telaNotebook = None  
         self.setWindowTitle("Cadastro de Desktop")
-        self.setGeometry(200, 100, 300, 250)
+        self.setGeometry(100, 100, 300, 250)
 
-       
         layout = QVBoxLayout()
 
         self.lblModelo = QLabel("Modelo:")
@@ -15,53 +15,39 @@ class TelaDesktop(QMainWindow):
         layout.addWidget(self.lblModelo)
         layout.addWidget(self.txtModelo)
 
-        self.lblCor = QLabel("Cor:")
-        self.txtCor = QLineEdit()
-        layout.addWidget(self.lblCor)
-        layout.addWidget(self.txtCor)
-
-       
         self.lblPreco = QLabel("Preço:")
         self.txtPreco = QLineEdit()
         layout.addWidget(self.lblPreco)
         layout.addWidget(self.txtPreco)
 
-        
+        self.lblCor = QLabel("Cor:")
+        self.txtCor = QLineEdit()
+        layout.addWidget(self.lblCor)
+        layout.addWidget(self.txtCor)
+
         self.lblCategoria = QLabel("Categoria:")
         self.txtCategoria = QLineEdit()
         layout.addWidget(self.lblCategoria)
         layout.addWidget(self.txtCategoria)
 
-      
-        btnSalvar = QPushButton("Salvar")
-        btnSalvar.clicked.connect(self.salvar)
-        layout.addWidget(btnSalvar)
+        self.btnSalvar = QPushButton("Salvar")
+        self.btnSalvar.clicked.connect(self.salvar)
+        layout.addWidget(self.btnSalvar)
 
-     
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
 
+    def setTelaNotebook(self, telaNotebook):
+        self.telaNotebook = telaNotebook
+
     def salvar(self):
-        modelo = self.txtModelo.text()
-        cor = self.txtCor.text()
-        preco = self.txtPreco.text()
-        categoria = self.txtCategoria.text()
+        nova_categoria = self.txtCategoria.text().strip()
+        if nova_categoria and nova_categoria not in self.categorias:
+            self.categorias.append(nova_categoria)
+            if self.telaNotebook:
+                self.telaNotebook.carregarCategorias()
+        print("Desktop salvo.")         
+        self.close()
 
-        if modelo != "" and cor != "" and preco != "" and categoria != "":
         
-            print(f"Desktop Salvo: Modelo = {modelo}, Cor = {cor}, Preço = {preco}, Categoria = {categoria}")
-            
-         
-            if categoria not in self.categorias:
-                self.categorias.append(categoria)
-
-          
-            self.atualizarTelaNotebook()
-
-            self.close()
-
-    def atualizarTelaNotebook(self):
-      
-        if hasattr(self, 'telaNotebook'):
-            self.telaNotebook.carregarCategorias()

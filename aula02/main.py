@@ -6,14 +6,14 @@ from Cidade import Cidade
 c1 = Cidade()
 c2 = Cidade("Porto Alegre")
 
-p1 = Pessoa("João")
+p1 = Pessoa("João", cid = c2)
 p2 = Pessoa("Maria", cid = c1)
 
 prod01 = Produto("Coca-Cola", 9.99)
 prod02 = Produto("Pepsi", qtd = 50)
 prod03 = Produto("Fanta", 17.85, 50)
 
-ped =  Pedido(cli = p2)
+ped =  Pedido(cli = p1)
 ped.addProd(prod02)
 ped.addProd(prod03)
 

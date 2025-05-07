@@ -1,19 +1,17 @@
-import sys
 from PyQt5.QtWidgets import QApplication
-from TelaNotebook import TelaNotebook
 from TelaDesktop import TelaDesktop
+from TelaNotebook import TelaNotebook
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
+if __name__ == '__main__':
+    app = QApplication([])
 
     categorias = []
 
-   
     tela_notebook = TelaNotebook(categorias)
+    tela_desktop = TelaDesktop(categorias)
+    tela_desktop.setTelaNotebook(tela_notebook)
+
+    tela_desktop.show()
     tela_notebook.show()
 
-   
-    tela_desktop = TelaDesktop(categorias)
-    tela_desktop.show()
-
-    sys.exit(app.exec_())
+    app.exec_()
