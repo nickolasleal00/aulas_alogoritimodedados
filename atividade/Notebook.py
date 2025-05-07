@@ -1,5 +1,6 @@
 from Produto import Produto
 
+
 class Notebook(Produto):
     def __init__(self,modelo,cor,preco,categoria,tempo_de_bateria):
         super().__init__(modelo,cor,preco,categoria)

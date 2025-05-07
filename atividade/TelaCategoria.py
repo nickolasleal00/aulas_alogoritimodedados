@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from Categoria import Categoria
 
+
 class TelaCategoria(QMainWindow):
     def __init__(self, categorias):
         super().__init__()

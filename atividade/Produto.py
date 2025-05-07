@@ -1,6 +1,7 @@
 from abc import ABC,abstractmethod
 from Categoria import Categoria
 
+
 class Produto(ABC):
     def __init__(self,modelo,cor,preco,categoria):
         self.modelo = modelo

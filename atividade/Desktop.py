@@ -1,5 +1,6 @@
 from Produto import Produto
 
+
 class Desktop(Produto):
     def __init__(self, modelo, cor, preco, categoria, potencia_da_fonte):
         super().__init__(modelo,cor,preco,categoria)
